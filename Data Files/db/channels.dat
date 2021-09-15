@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>channels</name>
+   <tag></tag>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>9c0287f3-3f13-435b-9681-58602be597d3</dataFileGUID>
+   <dataSourceUrl>jdbc:mysql://localhost:3306/sample</dataSourceUrl>
+   <driver>DBData</driver>
+   <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+   <isInternalPath>false</isInternalPath>
+   <password>QWExMjM0NTY=</password>
+   <query>select name from channels c where c.status=0 order by c.members desc</query>
+   <secureUserAccount>true</secureUserAccount>
+   <sheetName></sheetName>
+   <user>root</user>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

@@ -6,7 +6,112 @@
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>''</initValue>
-      <name>appName</name>
+      <initValue>6</initValue>
+      <name>G_Timeout</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>30</initValue>
+      <name>G_LongTimeOut</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'127.0.0.1:62001'</initValue>
+      <name>G_deviceID</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'androidapp/Multi-Parallel.apk'</initValue>
+      <name>G_MPApp</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'androidapp/RootExplorer.apk'</initValue>
+      <name>G_RSApp</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'androidapp/telegram3.apk'</initValue>
+      <name>G_TelegramApp</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description>use to count of channels should be  browsed</description>
+      <initValue>100</initValue>
+      <name>G_ChannelCount</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>3</initValue>
+      <name>G_InstanceCount</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'instance'</initValue>
+      <name>folderNamePrefix</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'localhost'</initValue>
+      <name>db_host</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'3306'</initValue>
+      <name>db_port</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'sample'</initValue>
+      <name>db_name</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'root'</initValue>
+      <name>db_user</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Aa123456'</initValue>
+      <name>db_password</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'select username from telegram_channels t  where t.`Status`=0 order by t.member_count desc limit 1'</initValue>
+      <name>fetch_query</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'update telegram_channels t set t.`Status`=1 where t.username=&quot;un&quot;'</initValue>
+      <name>update_query</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'update telegram_channels t set t.`Status`=3,t.DB_name=&quot;dbn&quot; where t.`Status`=2'</initValue>
+      <name>update_query2</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'update telegram_channels t set t.`Status`=0 where t.`Status`=1'</initValue>
+      <name>update_query3</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>1</initValue>
+      <name>counter</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>0</initValue>
+      <name>step</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>2</initValue>
+      <name>try_after</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>3</initValue>
+      <name>iteration</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

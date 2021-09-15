@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>copy file</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>9484d210-f9fb-476f-bca1-165392bab2de</testCaseGuid>
+   <variable>
+      <defaultValue>'0'</defaultValue>
+      <description></description>
+      <id>4f9cb83f-7a58-4399-968b-844bd8d16389</id>
+      <masked>false</masked>
+      <name>instance_index</name>
+   </variable>
+   <variable>
+      <defaultValue>'instance1'</defaultValue>
+      <description></description>
+      <id>8e03b412-b1e8-4ffc-b169-df3a5e77f040</id>
+      <masked>false</masked>
+      <name>instance_folder</name>
+   </variable>
+</TestCaseEntity>
