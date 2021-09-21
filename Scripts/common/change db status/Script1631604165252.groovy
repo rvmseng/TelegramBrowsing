@@ -25,10 +25,8 @@ CustomKeywords.'com.database.MySQL.connectDB'(GlobalVariable.db_host, GlobalVari
 
 
 tmp=GlobalVariable.update_query2
-tmp=tmp.replace("dbn",GlobalVariable.counter.toString())
+tmp=tmp.replaceFirst("dbn",GlobalVariable.counter.toString())
 CustomKeywords.'com.database.MySQL.execute'(tmp) // update status column to 2 and DB_name
-
-CustomKeywords.'com.database.MySQL.execute'(GlobalVariable.update_query3) // free all status 1
 
 CustomKeywords.'com.database.MySQL.closeDatabaseConnection'()
 

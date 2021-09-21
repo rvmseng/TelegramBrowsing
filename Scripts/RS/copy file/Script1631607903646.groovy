@@ -90,5 +90,3 @@ Mobile.waitForElementPresent(findTestObject('RS/filename_txt'), GlobalVariable.G
 Mobile.setText(findTestObject('RS/filename_txt'),newName, GlobalVariable.G_Timeout)
 
 Mobile.tap(findTestObject('RS/ok_btm'), GlobalVariable.G_Timeout)
-
-GlobalVariable.counter=GlobalVariable.counter+1

@@ -17,16 +17,8 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-try_after = 1
+rs = Mobile.waitForElementPresent(findTestObject('multi_parallel/telegram_Icon', [('index') : index]), GlobalVariable.G_LongTimeOut)
 
-while (try_after < GlobalVariable.try_after) {
-    rs = Mobile.waitForElementPresent(findTestObject('multi_parallel/telegram_Icon', [('index') : index]), GlobalVariable.G_LongTimeOut)
-
-    if (rs) {
-        Mobile.tap(findTestObject('multi_parallel/telegram_Icon', [('index') : index]), GlobalVariable.G_Timeout)
-
-        break
-    }
-    
-    try_after++
+if (rs) {
+    Mobile.tap(findTestObject('multi_parallel/telegram_Icon', [('index') : index]), GlobalVariable.G_Timeout)
 }

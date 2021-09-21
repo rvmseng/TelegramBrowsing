@@ -3,7 +3,7 @@
    <description></description>
    <name>data_folder1</name>
    <tag></tag>
-   <elementGuidId>cfaf5a1d-f92a-488c-bc8b-8b6dcc57b032</elementGuidId>
+   <elementGuidId>3d84ed5b-6fe7-471a-935f-0ae491ad23c6</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <webElementProperties>

@@ -36,7 +36,7 @@ while (true) {
 
     WebUI.callTestCase(findTestCase('RS/open RS app'), [:], FailureHandling.STOP_ON_FAILURE)
 
-    WebUI.callTestCase(findTestCase('RS/setup folders'), [:], FailureHandling.STOP_ON_FAILURE)
+    //WebUI.callTestCase(findTestCase('RS/setup folders'), [:], FailureHandling.STOP_ON_FAILURE)
 
     WebUI.callTestCase(findTestCase('RS/copy file'), [('instance_index') : app_index.toString(), ('instance_folder') : GlobalVariable.folderNamePrefix + 
             (app_index + GlobalVariable.step).toString()], FailureHandling.STOP_ON_FAILURE)

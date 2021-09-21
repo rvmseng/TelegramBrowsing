@@ -25,7 +25,7 @@ import org.openqa.selenium.Keys as Keys
 'Get full directory\'s path of android application'
 def appPath = PathUtil.relativeToAbsolutePath(GlobalVariable.G_RSApp, RunConfiguration.getProjectDir())
 
-initDevice()
+//initDevice()
 
 RunConfiguration.setExecutionSettingFile(RunConfiguration.getSettingFilePath())
 Mobile.startApplication(appPath, false)

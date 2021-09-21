@@ -17,6 +17,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+
 Mobile.waitForElementPresent(findTestObject('RS/first_tab'), GlobalVariable.G_LongTimeOut)
 Mobile.tap(findTestObject('RS/first_tab'), GlobalVariable.G_Timeout)
 Mobile.tap(findTestObject('RS/top_menu'), GlobalVariable.G_Timeout)

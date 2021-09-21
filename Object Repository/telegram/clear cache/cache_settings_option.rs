@@ -3,7 +3,7 @@
    <description></description>
    <name>cache_settings_option</name>
    <tag></tag>
-   <elementGuidId>00000000-0000-0000-0000-000000000000</elementGuidId>
+   <elementGuidId>8f98f7ef-ae37-4bd3-88ad-9e3745bac7f7</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <webElementProperties>
@@ -12,13 +12,6 @@
       <name>class</name>
       <type>Main</type>
       <value>android.widget.TextView</value>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>instance</name>
-      <type>Main</type>
-      <value>16</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -167,6 +160,6 @@
       <type>Main</type>
       <value>//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.FrameLayout[10]/android.widget.TextView[1]</value>
    </webElementProperties>
-   <locator>//*[@class = 'android.widget.TextView' and @instance = '16' and (@text = 'Cache Settings' or . = 'Cache Settings') and @resource-id = '']</locator>
+   <locator>//*[@class = 'android.widget.TextView' and (@text = 'Cache Settings' or . = 'Cache Settings') and @resource-id = '']</locator>
    <locatorStrategy>ATTRIBUTES</locatorStrategy>
 </MobileElementEntity>
