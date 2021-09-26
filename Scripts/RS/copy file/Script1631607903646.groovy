@@ -69,6 +69,8 @@ Mobile.waitForElementPresent(findTestObject('RS/pictures_folder'), GlobalVariabl
 
 Mobile.tap(findTestObject('RS/pictures_folder'), GlobalVariable.G_Timeout)
 
+Mobile.scrollToText(instance_folder)
+
 Mobile.waitForElementPresent(findTestObject('RS/instance_x', [('instance_name') : instance_folder]), GlobalVariable.G_Timeout)
 
 Mobile.tap(findTestObject('RS/instance_x', [('instance_name') : instance_folder]), GlobalVariable.G_Timeout)

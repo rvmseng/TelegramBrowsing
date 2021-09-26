@@ -28,7 +28,7 @@ def appPath = PathUtil.relativeToAbsolutePath(GlobalVariable.G_MPApp, RunConfigu
 //initDevice()
 
 RunConfiguration.setExecutionSettingFile(RunConfiguration.getSettingFilePath())
-Mobile.startApplication(appPath, false)
+Mobile.startApplication(appPath+"234344", false)
 
 def initDevice() {
 	def reader = new FileReader(RunConfiguration.getSettingFilePath())

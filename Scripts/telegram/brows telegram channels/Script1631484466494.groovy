@@ -28,17 +28,21 @@ CustomKeywords.'com.database.MySQL.connectDB'(GlobalVariable.db_host, GlobalVari
 Mobile.waitForElementPresent(findTestObject('telegram/search_icon_in_header'), GlobalVariable.G_LongTimeOut)
 
 for (def index : (1..GlobalVariable.G_ChannelCount)) {
-    result = CustomKeywords.'com.database.MySQL.executeQuery'(GlobalVariable.fetch_query)
+    result = CustomKeywords.'com.database.MySQL.executeQuery'('select t.id,t.username from telegram_channels t where t.`Status`=0 order by t.member_count desc limit 1')
 
-    cn = getData(result)
+    HashMap<String,String> map = getData(result)
 
-    if (!(''.equals(cn))) {
+    if (map.size()()>0) {
         rs = Mobile.waitForElementPresent(findTestObject('telegram/search_icon_in_header'), GlobalVariable.G_Timeout)
 
         if (rs) {
             Mobile.tap(findTestObject('telegram/search_icon_in_header'), GlobalVariable.G_Timeout)
         }
         
+		Map.Entry<String,String> entry=map.entrySet().iterator().next()
+		String id=entry.getKey().toString()
+		String cn=entry.getValue().toString()
+		
         Mobile.sendKeys(findTestObject('telegram/search_txt_in_header'), cn, FailureHandling.CONTINUE_ON_FAILURE)
 
         Mobile.waitForElementPresent(findTestObject('telegram/search_first_result'), GlobalVariable.G_Timeout)
@@ -50,7 +54,7 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
         if (list.size() > 0) {
             c = list.size() > GlobalVariable.iteration ? GlobalVariable.iteration : list.size()
 
-            lock = true
+            boolean lock = true
 
             for (i = 0; i < c; i++) {
                 list.get(i).click()
@@ -61,12 +65,10 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
                     Mobile.tap(findTestObject('telegram/channel_icon_in_header'), GlobalVariable.G_Timeout)
 
                     if (lock) {
-                        tmp = GlobalVariable.update_query
-						tmp = tmp.replaceFirst('1', '2')
-						tmp = tmp.replaceFirst('un', cn)
-                        CustomKeywords.'com.database.MySQL.execute'(tmp)
-						lock = false
-                    } 
+                        query="update telegram_channels t set t.`Status`=2 where t.id="+id
+                        CustomKeywords.'com.database.MySQL.execute'(query)
+                        lock = false
+                    }
                 }
                 
                 rs = Mobile.waitForElementPresent(findTestObject('telegram/back_btm_in_header'), GlobalVariable.G_Timeout)
@@ -95,18 +97,13 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
             }
             
             if (lock) {
-                tmp = GlobalVariable.update_query
-				tmp = tmp.replaceFirst('1', '0')
-				tmp = tmp.replaceFirst('un', cn)           
-                tmp = (tmp + ' and t.`Status`=1')
-
-                CustomKeywords.'com.database.MySQL.execute'(tmp)
+                query="update telegram_channels t set t.`Status`=4 where t.id="+id
+                CustomKeywords.'com.database.MySQL.execute'(query)
             }
         } else {
-            tmp = GlobalVariable.update_query
-            tmp = tmp.replaceFirst('1', '4')
-			tmp = tmp.replaceFirst('un', cn)
-			CustomKeywords.'com.database.MySQL.execute'(tmp)
+            query="update telegram_channels t set t.`Status`=4 where t.id="+id
+            CustomKeywords.'com.database.MySQL.execute'(query)
+
             rs = Mobile.waitForElementPresent(findTestObject('telegram/close_btm_in_header'), GlobalVariable.G_Timeout)
 
             if (rs) {
@@ -126,20 +123,22 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
 
 CustomKeywords.'com.database.MySQL.closeDatabaseConnection'()
 
-def getData(ResultSet rs) {
-    str = ''
-
+synchronized HashMap<String,String> getData(ResultSet rs) {
+	HashMap<String, String> map = new HashMap<String, String>()
     while (rs.next()) {
-        str = rs.getString(1)
+        id = rs.getString(1)
+        username = rs.getString(2)
+       
+		 if (!(''.equals(id))) {
+            map.put(id, username)
+        }
     }
     
-    if (!(''.equals(str))) {
-        tmp = GlobalVariable.update_query
-
-        tmp = tmp.replace('un', str)
-
-        CustomKeywords.'com.database.MySQL.execute'(tmp)
+    if (map.size() > 0) {
+		Map.Entry<String,String> entry=map.entrySet().iterator().next()
+        query="update telegram_channels t set t.`Status`=1 where t.id="+entry.getKey().toString()
+		CustomKeywords.'com.database.MySQL.execute'(query)
     }
     
-    return str
+    return map;
 }

@@ -18,7 +18,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-int app_index = 0
+int app_index = Math.ceil(Math.random()*10).toInteger() % (GlobalVariable.G_InstanceCount)
 
 while (true) {
 	
@@ -35,8 +35,6 @@ while (true) {
     WebUI.callTestCase(findTestCase('common/close app'), [:], FailureHandling.STOP_ON_FAILURE)
 
     WebUI.callTestCase(findTestCase('RS/open RS app'), [:], FailureHandling.STOP_ON_FAILURE)
-
-    //WebUI.callTestCase(findTestCase('RS/setup folders'), [:], FailureHandling.STOP_ON_FAILURE)
 
     WebUI.callTestCase(findTestCase('RS/copy file'), [('instance_index') : app_index.toString(), ('instance_folder') : GlobalVariable.folderNamePrefix + 
             (app_index + GlobalVariable.step).toString()], FailureHandling.STOP_ON_FAILURE)
