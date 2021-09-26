@@ -36,7 +36,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>use to count of channels should be  browsed</description>
-      <initValue>100</initValue>
+      <initValue>4</initValue>
       <name>G_ChannelCount</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -113,5 +113,15 @@
       <description></description>
       <initValue>3</initValue>
       <name>iteration</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>3</initValue>
+      <name>queue</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>30</initValue>
+      <name>delayTime</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

@@ -27,12 +27,22 @@ CustomKeywords.'com.database.MySQL.connectDB'(GlobalVariable.db_host, GlobalVari
 
 Mobile.waitForElementPresent(findTestObject('telegram/search_icon_in_header'), GlobalVariable.G_LongTimeOut)
 
+int queue=0
+boolean flag=true
+
 for (def index : (1..GlobalVariable.G_ChannelCount)) {
-    result = CustomKeywords.'com.database.MySQL.executeQuery'('select t.id,t.username from telegram_channels t where t.`Status`=0 order by t.member_count desc limit 1')
+    
+	if(queue >= GlobalVariable.queue) {
+		index = (GlobalVariable.G_ChannelCount + 1)
+		flag=false;
+		continue
+	}
+	
+	result = CustomKeywords.'com.database.MySQL.executeQuery'('select t.id,t.username from telegram_channels t where t.`Status`=0 order by t.member_count desc limit 1')
 
     HashMap<String,String> map = getData(result)
 
-    if (map.size()()>0) {
+    if (map.size()>0) {
         rs = Mobile.waitForElementPresent(findTestObject('telegram/search_icon_in_header'), GlobalVariable.G_Timeout)
 
         if (rs) {
@@ -55,6 +65,7 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
             c = list.size() > GlobalVariable.iteration ? GlobalVariable.iteration : list.size()
 
             boolean lock = true
+			queue=0
 
             for (i = 0; i < c; i++) {
                 list.get(i).click()
@@ -101,6 +112,7 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
                 CustomKeywords.'com.database.MySQL.execute'(query)
             }
         } else {
+			queue++
             query="update telegram_channels t set t.`Status`=4 where t.id="+id
             CustomKeywords.'com.database.MySQL.execute'(query)
 
@@ -122,6 +134,7 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
 }
 
 CustomKeywords.'com.database.MySQL.closeDatabaseConnection'()
+return flag;
 
 synchronized HashMap<String,String> getData(ResultSet rs) {
 	HashMap<String, String> map = new HashMap<String, String>()
