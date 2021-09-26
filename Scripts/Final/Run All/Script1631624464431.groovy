@@ -103,6 +103,6 @@ boolean reachDelayTime(int app,HashMap<Integer,Long> delayList) {
 		return true
 	}
 	
-	System.out.println("\n [Warning] Telegram["+app+"] do not reach delay time\n")
+	System.out.println("\n [Warning] Telegram["+app+"] does not reach delay time\n")
 	return false
 }
