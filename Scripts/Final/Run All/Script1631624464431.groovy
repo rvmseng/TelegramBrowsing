@@ -25,11 +25,15 @@ int app_index = Math.ceil(Math.random() * 10).toInteger() % GlobalVariable.G_Ins
 ArrayList<Integer> inactiveList = new ArrayList<Integer>()
 HashMap<Integer,Long> delayList = new HashMap<Integer,Long>()
 
+System.out.println("[info] starting...");
 while (true) {
     GlobalVariable.counter = System.currentTimeMillis()
 
     if (isActive(app_index,inactiveList) && reachDelayTime(app_index,delayList)) {
+		System.out.println("[info] open multiParallel app for brows");
 		WebUI.callTestCase(findTestCase('multi_parallel/open multiParallel app'), [:], FailureHandling.STOP_ON_FAILURE)
+		
+		System.out.println("[info] select telegram app["+app_index+"] for brows");
 		WebUI.callTestCase(findTestCase('multi_parallel/select telegram app'), [('index') : (app_index + 1).toString()], 
             FailureHandling.STOP_ON_FAILURE)
 
@@ -37,9 +41,9 @@ while (true) {
 
         if (rs) {
             inactiveList.add(app_index)
-			System.out.println("\n [Warning] Telegram["+app_index+"] added to deactive list\n")
+			System.out.println("\n [Warning] Telegram["+app_index+"] added to inactive list\n")
         } else {
-            
+			System.out.println("[info] brows telegram["+app_index+"] channels");
 			int rs=(Integer)WebUI.callTestCase(findTestCase('telegram/brows telegram channels'), [:], FailureHandling.STOP_ON_FAILURE)
 			if(rs==0) {
 				continue
@@ -49,23 +53,30 @@ while (true) {
 				delayList.put(app_index, time)
 				System.out.println("\n [Warning] Telegram["+app_index+"] added to delay list\n")
 			}
-			
+			System.out.println("[info] close multiParallel");
             WebUI.callTestCase(findTestCase('common/close app'), [:], FailureHandling.STOP_ON_FAILURE)
-
+			
+			System.out.println("[info] open Root Explorer app");
             WebUI.callTestCase(findTestCase('RS/open RS app'), [:], FailureHandling.STOP_ON_FAILURE)
 
+			System.out.println("[info] copy file");
             WebUI.callTestCase(findTestCase('RS/copy file'), [('instance_index') : app_index.toString(), ('instance_folder') : GlobalVariable.folderNamePrefix + 
                     (app_index + GlobalVariable.step).toString()], FailureHandling.STOP_ON_FAILURE)
 
-            WebUI.callTestCase(findTestCase('common/close app'), [:], FailureHandling.STOP_ON_FAILURE)
+			System.out.println("[info] close Root Explorer app");
+			WebUI.callTestCase(findTestCase('common/close app'), [:], FailureHandling.STOP_ON_FAILURE)
 
-            WebUI.callTestCase(findTestCase('multi_parallel/open multiParallel app'), [:], FailureHandling.STOP_ON_FAILURE)
+			System.out.println("[info] open multiParallel app for clear catche");
+			WebUI.callTestCase(findTestCase('multi_parallel/open multiParallel app'), [:], FailureHandling.STOP_ON_FAILURE)
 
+			System.out.println("[info] select telegram["+app_index+"] app for clear catche");
             WebUI.callTestCase(findTestCase('multi_parallel/select telegram app'), [('index') : (app_index + 1).toString()], 
                 FailureHandling.STOP_ON_FAILURE)
 
-            WebUI.callTestCase(findTestCase('telegram/clear cache'), [:], FailureHandling.STOP_ON_FAILURE)
+			System.out.println("[info] do clear cache");
+			WebUI.callTestCase(findTestCase('telegram/clear cache'), [:], FailureHandling.STOP_ON_FAILURE)
 			
+			System.out.println("[info] close multiParallel app after clear cache");
 			WebUI.callTestCase(findTestCase('common/close app'), [:], FailureHandling.STOP_ON_FAILURE)
         }
     }
@@ -75,6 +86,7 @@ while (true) {
 	
     app_index++
     app_index = (app_index % GlobalVariable.G_InstanceCount)
+	System.out.println("[info] end of all action");
 }
 
 def getData(ResultSet rs) {
