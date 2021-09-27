@@ -40,15 +40,16 @@ while (true) {
 			System.out.println("\n [Warning] Telegram["+app_index+"] added to deactive list\n")
         } else {
             
-			rs=WebUI.callTestCase(findTestCase('telegram/brows telegram channels'), [:], FailureHandling.STOP_ON_FAILURE)
-			if(rs==false) {
+			int rs=(Integer)WebUI.callTestCase(findTestCase('telegram/brows telegram channels'), [:], FailureHandling.STOP_ON_FAILURE)
+			if(rs==0) {
+				continue
+			}
+			else if(rs==1) {
 				long time=System.currentTimeSeconds()+(GlobalVariable.delayTime*60)
 				delayList.put(app_index, time)
 				System.out.println("\n [Warning] Telegram["+app_index+"] added to delay list\n")
 			}
 			
-            WebUI.callTestCase(findTestCase('common/change db status'), [:], FailureHandling.STOP_ON_FAILURE)
-
             WebUI.callTestCase(findTestCase('common/close app'), [:], FailureHandling.STOP_ON_FAILURE)
 
             WebUI.callTestCase(findTestCase('RS/open RS app'), [:], FailureHandling.STOP_ON_FAILURE)
@@ -64,6 +65,8 @@ while (true) {
                 FailureHandling.STOP_ON_FAILURE)
 
             WebUI.callTestCase(findTestCase('telegram/clear cache'), [:], FailureHandling.STOP_ON_FAILURE)
+			
+			WebUI.callTestCase(findTestCase('common/close app'), [:], FailureHandling.STOP_ON_FAILURE)
         }
     }
     else {

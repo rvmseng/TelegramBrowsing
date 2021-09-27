@@ -25,16 +25,19 @@ import org.openqa.selenium.WebElement as Keys
 CustomKeywords.'com.database.MySQL.connectDB'(GlobalVariable.db_host, GlobalVariable.db_port, GlobalVariable.db_name, GlobalVariable.db_user, 
     GlobalVariable.db_password)
 
-Mobile.waitForElementPresent(findTestObject('telegram/search_icon_in_header'), GlobalVariable.G_LongTimeOut)
+rs=Mobile.waitForElementPresent(findTestObject('telegram/search_icon_in_header'), GlobalVariable.G_LongTimeOut)
+if(rs==false) {
+	return 0
+}
 
 int queue=0
-boolean flag=true
+int flag=2
 
 for (def index : (1..GlobalVariable.G_ChannelCount)) {
     
 	if(queue >= GlobalVariable.queue) {
 		index = (GlobalVariable.G_ChannelCount + 1)
-		flag=false;
+		flag=1;
 		continue
 	}
 	
@@ -76,7 +79,7 @@ for (def index : (1..GlobalVariable.G_ChannelCount)) {
                     Mobile.tap(findTestObject('telegram/channel_icon_in_header'), GlobalVariable.G_Timeout)
 
                     if (lock) {
-                        query="update telegram_channels t set t.`Status`=2 where t.id="+id
+                        query="update telegram_channels t set t.`Status`=3, t.DB_name='"+GlobalVariable.counter+"' where t.id="+id
                         CustomKeywords.'com.database.MySQL.execute'(query)
                         lock = false
                     }

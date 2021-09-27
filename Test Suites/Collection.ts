@@ -28,7 +28,7 @@
       <TestSuiteRunConfiguration>
          <configuration>
             <groupName>Mobile</groupName>
-            <profileName>device2</profileName>
+            <profileName>default</profileName>
             <runConfigurationData>
                <entry>
                   <key>deviceName</key>

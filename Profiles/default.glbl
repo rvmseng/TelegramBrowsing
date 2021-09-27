@@ -5,7 +5,7 @@
    <tag></tag>
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
-      <description></description>
+      <description>short timeout</description>
       <initValue>6</initValue>
       <name>G_Timeout</name>
    </GlobalVariableEntity>
@@ -40,7 +40,7 @@
       <name>G_ChannelCount</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>count of telegram app in multi parallel app</description>
       <initValue>3</initValue>
       <name>G_InstanceCount</name>
    </GlobalVariableEntity>
@@ -75,52 +75,27 @@
       <name>db_password</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
-      <initValue>'select username from telegram_channels t  where t.`Status`=0 order by t.member_count desc limit 1'</initValue>
-      <name>fetch_query</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>'update telegram_channels t set t.`Status`=1 where t.username=&quot;un&quot;'</initValue>
-      <name>update_query</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>'update telegram_channels t set t.`Status`=3,t.DB_name=&quot;dbn&quot; where t.`Status`=2'</initValue>
-      <name>update_query2</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>'update telegram_channels t set t.`Status`=0 where t.`Status`=1'</initValue>
-      <name>update_query3</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
+      <description>used to hold current timestamp</description>
       <initValue>1</initValue>
       <name>counter</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>to find proper folder</description>
       <initValue>0</initValue>
       <name>step</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
-      <initValue>2</initValue>
-      <name>try_after</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
+      <description>count of iteration for each channel</description>
       <initValue>3</initValue>
       <name>iteration</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>count of failure to find result </description>
       <initValue>3</initValue>
       <name>queue</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
+      <description>time (minute) to hold a telegram app after no result</description>
       <initValue>30</initValue>
       <name>delayTime</name>
    </GlobalVariableEntity>
